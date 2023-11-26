@@ -17,7 +17,8 @@ generate_certificate
 certificate_path="/etc/ssl/private/$domain_name.crt"
 private_key_path="/etc/ssl/private/$domain_name.key"
 
-echo -e "证书文件已保存到/etc/ssl/private/$domain_name.crt"
+echo -e "
+证书文件已保存到/etc/ssl/private/$domain_name.crt"
 
 echo -e "
 私钥文件已保存到/etc/ssl/private/$domain_name.key"
