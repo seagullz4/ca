@@ -15,11 +15,17 @@ generate_certificate() {
 
     # 验证域名格式
     if [[ "$domain_name" =~ ^[a-zA-Z0-9.-]+$ ]]; then
-        # 检查并创建目标目录
+        # 定义目标目录
         target_dir="/etc/ssl/private"
+
+        # 检查并创建目标目录
         if [ ! -d "$target_dir" ]; then
-            echo -e "${RED}目标目录 $target_dir 不存在。请确保您有适当的权限，并手动创建该目录。${NC}"
-            exit 1
+            echo -e "${YELLOW}目标目录 $target_dir 不存在，正在创建...${NC}"
+            mkdir -p "$target_dir"
+            if [ $? -ne 0 ]; then
+                echo -e "${RED}无法创建目录 $target_dir，请检查权限。${NC}"
+                exit 1
+            fi
         fi
 
         # 生成证书和私钥
